@@ -1,7 +1,56 @@
 {
   "ecmaFeatures": {
-    "jsx": true,
-    "modules": true
+    "ecmaVersion": 6,
+
+    "sourceType": "module",
+
+    "arrowFunctions": true,
+
+    "binaryLiterals": true,
+
+    "blockBindings": true,
+
+    "classes": true,
+
+    "defaultParams": true,
+
+    "destructuring": true,
+
+    "experimentalObjectRestSpread": true,
+
+    "restParams": true,
+
+    "forOf": true,
+
+    "generators": true,
+
+    "modules": false,
+
+    "objectLiteralComputedProperties": true,
+
+    "objectLiteralDuplicateProperties": true,
+
+    "objectLiteralShorthandMethods": true,
+
+    "objectLiteralShorthandProperties": true,
+
+    "octalLiterals": true,
+
+    "regexUFlag": true,
+
+    "regexYFlag": true,
+
+    "spread": true,
+
+    "superInFunctions": true,
+
+    "templateStrings": true,
+
+    "unicodeCodePointEscapes": true,
+
+    "globalReturn": true,
+
+    "jsx": true
   },
   "env": {
     "browser": true,
@@ -34,7 +83,7 @@
       "anonymous": "always",
       "named": "never"
     }],
-    "strict": [2, "global"]
+    "strict": 0
   },
   "plugins": [
     "react"

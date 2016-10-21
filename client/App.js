@@ -6,8 +6,8 @@ import createLogger from 'redux-logger';
 import { Provider } from 'react-redux';
 
 import Header from './components/Header';
-import Popular from './components/popular/Popular';
-import reducer from './redux/reducers/reducer';
+import PopularContainer from './components/popular/PopularContainer';
+import reducer from './redux/reducers/mainData';
 
 const loggerMiddleware = createLogger();
 const store = createStore(reducer,
@@ -30,7 +30,7 @@ class App extends Component {
       <Provider store={store}>
         <div>
           <Header />
-          <Popular />
+          <PopularContainer />
         </div>
       </Provider>
     );

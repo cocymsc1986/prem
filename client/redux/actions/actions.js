@@ -3,10 +3,7 @@ import {
   INITIAL_DATA_SUCCESS,
   INITIAL_DATA_ERROR,
   FETCHING_DATA,
-  GET_MOST_POPULAR,
-  GET_HIGHEST_POINTS,
-  GET_BEST_FORM,
-  GET_BEST_VALUE
+  GET_MOST_POPULAR
 } from './actionTypes';
 
 /*
@@ -43,30 +40,6 @@ export function getMostPopular() {
   };
 }
 
-export function getBestForm() {
-  return dispatch => {
-    dispatch({
-      type: GET_BEST_FORM
-    });
-  };
-}
-
-export function getBestValue() {
-  return dispatch => {
-    dispatch({
-      type: GET_BEST_VALUE
-    });
-  };
-}
-
-export function getMostPopular(response) {
-  return dispatch => {
-    dispatch({
-      type: GET_MOST_POPULAR
-    });
-  };
-}
-
 export function getData() {
   return function (dispatch) {
     // set pending
@@ -80,6 +53,7 @@ export function getData() {
 
         console.info('response success');
         dispatch(initialDataSuccess(data));
+        dispatch(getMostPopular());
       });
 
       // Error handling needed
