@@ -1,5 +1,4 @@
 import { connect } from 'react-redux';
-
 import Popular from './Popular';
 
 const mapStateToProps = (state) => {
