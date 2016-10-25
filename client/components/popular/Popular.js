@@ -4,12 +4,6 @@ class Popular extends Component {
 
   renderKey(key) {
     const { mostPopular } = this.props;
-
-    if (!mostPopular[key]) {
-      return (
-        <p key={key}>...loading</p>
-      );
-    }
     return (
       mostPopular[key] &&
         <div key={key}>
@@ -25,7 +19,10 @@ class Popular extends Component {
     return (
       <div>
         <ul>
-          {
+          {!mostPopular &&
+            <p className="loader">...loading</p>
+          }
+          {mostPopular &&
             Object.keys(mostPopular || {}).map((key) => {
               return (
                 this.renderKey(key)
