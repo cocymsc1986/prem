@@ -6,18 +6,17 @@ const initialState = {
       success: null,
       lastUpdated: null,
       error: null
-    },
-    data: {}
+    }
   },
   mostPopular: {
     selected_by_percent: null,
-    total_points: null,
     transfers_in_event: null,
-    transfers_out_event: null,
+    total_points: null,
     form: null,
     value_form: null,
+    transfers_out_event: null,
     ict_index: null
-  }
+  },
 };
 
 export default function mainData(state = initialState, action) {

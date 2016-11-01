@@ -4,6 +4,7 @@ import { expect, assert } from 'chai';
 import { shallow } from 'enzyme';
 
 import Popular from '../../../client/components/popular/Popular';
+import Loader from '../../../client/components/Loader';
 
 describe('Popular component', function() {
   context('On render', function() {
@@ -33,7 +34,7 @@ describe('Popular component', function() {
     })
     
     it("should render loading", function() {
-      expect(component.find('.loader')).to.have.length(1);
+      expect(component.find(Loader)).to.have.length(1);
     });
   });
 
@@ -41,23 +42,27 @@ describe('Popular component', function() {
     let component;
     beforeEach(() => {
       const mostPopular = {
-        points: {
-          web_name: 'test_name'
+        selected_by_percent: {
+          web_name: 'test_name',
+          selected_by_percent: '99'
         },
-        transferred_in: {
-          web_name: 'test_name2'
+        total_points: {
+          web_name: 'test_name2',
+          total_points: '50'
         }
       }
       component = shallow(<Popular mostPopular={mostPopular}/>)
     })
     
     it("should not render loading", function() {
-      expect(component.find('.loader')).to.have.length(0);
+      expect(component.find(Loader)).to.have.length(0);
     });
 
-    it("should render mostPopular data", function() {
-      expect(component.find('h2').at(0).text()).to.equal('test_name')
-      expect(component.find('h2').at(1).text()).to.equal('test_name2')
+    it("should render mostPopular data with correct labels and values", function() {
+      expect(component.find('p').at(0).text()).to.equal('Most Selected')
+      expect(component.find('p').at(1).text()).to.equal('Highest Points')
+      expect(component.find('h2').at(0).text()).to.equal('test_name 99')
+      expect(component.find('h2').at(1).text()).to.equal('test_name2 50')
     });
   });
 })

@@ -3,12 +3,12 @@ import React from 'react';
 import { expect, assert } from 'chai';
 import { mount, shallow } from 'enzyme';
 
-import Header from '../../client/components/Header';
+import Intro from '../../client/components/Intro';
 
 describe('Header component', function() {
   
   it("contains <h1 /> element", function() {
-    const app = shallow(<Header />)
-    expect(app.find('h1')).to.have.length(1);
+    const app = shallow(<Intro />)
+    expect(app.find('p')).to.have.length(1);
   });
 });
