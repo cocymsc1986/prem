@@ -61,7 +61,7 @@ class Popular extends Component {
       return css(styles.mainItems, colorArray[i]);
     }
 
-    return css(styles.secondaryItems);
+    return css(styles.secondaryItems, colorArray[i]);
   }
 
   getTitle(key) {
