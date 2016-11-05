@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import { createStore, applyMiddleware } from 'redux';
 import thunkMiddleware from 'redux-thunk';
-import createLogger from 'redux-logger';
+//import createLogger from 'redux-logger';
 import { Provider } from 'react-redux';
 import { StyleSheet, css } from 'aphrodite';
 
@@ -12,7 +12,7 @@ import Intro from './components/Intro';
 import PopularContainer from './components/popular/PopularContainer';
 import reducer from './redux/reducers/mainData';
 
-const loggerMiddleware = createLogger();
+//const loggerMiddleware = createLogger();
 const store = createStore(reducer,
   applyMiddleware(
     thunkMiddleware, // lets us dispatch() functions
