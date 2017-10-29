@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { expect, assert } from 'chai';
 import { shallow } from 'enzyme';

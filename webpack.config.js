@@ -19,6 +19,7 @@ module.exports = {
     filename: 'bundle.js',
     publicPath: 'http://localhost:5000/static'
   },
+  devTool: 'eval-source-map',
   externals: {
     'cheerio': 'window',
     'react/lib/ExecutionEnvironment': true,

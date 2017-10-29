@@ -1,4 +1,6 @@
 
+/* eslint camelcase: 0 */
+
 const initialState = {
   mainData: {
     status: {
@@ -16,10 +18,10 @@ const initialState = {
     value_form: null,
     transfers_out_event: null,
     ict_index: null
-  },
+  }
 };
 
-export default function mainData(state = initialState, action) {
+export default function fantasyData(state = initialState, action) {
   switch (action.type) {
     case 'FETCHING_DATA':
       console.info('fetching data');
@@ -54,7 +56,8 @@ export default function mainData(state = initialState, action) {
         mainData: {
           status: {
             pending: false,
-            success: false
+            success: false,
+            error: action.response
           }
         },
         mostPopular: {
@@ -76,17 +79,27 @@ export default function mainData(state = initialState, action) {
         }
       });
 
+    case 'GET_PLAYER':
+      console.info('getting player info');
+      break;
     default:
       return state;
   }
 }
 
 function getMostPopularStats(data, mostPopular) {
-  let { selected_by_percent, total_points, transfers_in_event, transfers_out_event, form, value_form, ict_index } = mostPopular;
+  let {
+    selected_by_percent,
+    total_points, transfers_in_event,
+    transfers_out_event,
+    form, value_form,
+    ict_index
+  } = mostPopular;
   let populatedData = {};
 
   for (let x of data.elements) {
-    if (selected_by_percent === null || parseFloat(x.selected_by_percent) > parseFloat(selected_by_percent.selected_by_percent)) {
+    if (selected_by_percent === null || parseFloat(x.selected_by_percent) >
+      parseFloat(selected_by_percent.selected_by_percent)) {
       selected_by_percent = x;
     }
 

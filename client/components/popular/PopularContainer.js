@@ -1,9 +1,10 @@
-import { connect } from 'react-redux';
+import {connect} from 'react-redux';
 import Popular from './Popular';
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
-    mostPopular: state.mostPopular
+    mostPopular: state.fantasyData.mostPopular,
+    error: state.fantasyData.mainData.status.error
   };
 };
 

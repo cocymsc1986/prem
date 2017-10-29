@@ -1,9 +1,12 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 import Loader from '../Loader';
-import { StyleSheet, css } from 'aphrodite';
+import {StyleSheet, css} from 'aphrodite';
+
+import {colours} from '../../ui/theme.js';
 
 const styles = StyleSheet.create({
-  popularWrapper: {
+  popularContainer: {
     display: 'flex',
     flexFlow: 'row wrap',
     margin: '0 -1%'
@@ -21,23 +24,23 @@ const styles = StyleSheet.create({
     background: '#f8f8f8'
   },
   purple: {
-    background: '#340438',
+    background: colours.purple,
     color: '#ffffff'
   },
   blue: {
-    background: '#66E6FF'
+    background: colours.blue
   },
   greyOne: {
-    background: '#D3D3D3'
+    background: colours.greyLight
   },
   greyTwo: {
-    background: '#BBB7B7'
+    background: colours.grey
   },
   greyThree: {
-    background: '#999999'
+    background: colours.greyDark
   },
   greyFour: {
-    background: '#757474'
+    background: colours.greyDarker
   }
 });
 
@@ -82,27 +85,31 @@ class Popular extends Component {
   }
 
   render() {
-    const { mostPopular } = this.props;
+    const {mostPopular} = this.props;
 
     return (
-      <div className={css(styles.popularWrapper)}>
-        {!mostPopular &&
-          <Loader />
-        }
-        {mostPopular &&
-          Object.keys(mostPopular || {}).map((key, i) => {
-            return (
-              this.renderKey(key, i)
-            );
-          })
-        }
-      </div>
+      <section className={css(styles.popularBlock)}>
+        <h2>This Gameweek's stats</h2>
+        <div className={css(styles.popularContainer)}>
+          {!mostPopular &&
+            <Loader />
+          }
+          {mostPopular &&
+            Object.keys(mostPopular || {}).map((key, i) => {
+              return (
+                this.renderKey(key, i)
+              );
+            })
+          }
+        </div>
+      </section>
     );
   }
 }
 
 Popular.propTypes = {
-  mostPopular: React.PropTypes.object
+  mostPopular: PropTypes.object,
+  error: PropTypes.object
 };
 
 export default Popular;
