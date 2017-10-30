@@ -1,11 +1,17 @@
 const theme = {
   colours: {
     purple: '#38003C',
-    green: '##00FF87'
+    green: '#00FF87',
+    blue: '#66E6FF',
+    greyLight: '#D3D3D3',
+    grey: '#BBB7B7',
+    greyDark: '#999999',
+    greyDarker: '#757474'
   },
   spacing: '14px',
   maxWidth: '1024px',
   font: {
+    familyDefault: 'Raleway',
     size: {
       body: '16px',
       bodyValue: 16,

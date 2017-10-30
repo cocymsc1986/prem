@@ -3,12 +3,20 @@ import {
   INITIAL_DATA_SUCCESS,
   INITIAL_DATA_ERROR,
   FETCHING_DATA,
-  GET_MOST_POPULAR
+  GET_MOST_POPULAR,
+  GO_TO_URL
 } from './actionTypes';
 
 /*
  * actions
  */
+
+export function goToUrl(url) {
+  return {
+    type: GO_TO_URL,
+    value: url
+  };
+}
 
 export function fetchingData() {
   return {
@@ -42,20 +50,17 @@ export function getMostPopular() {
 
 export function getData() {
   return function (dispatch) {
-    // set pending
     dispatch(fetchingData());
 
-    // fetch data
     return fetch('http://jokecamp.github.io/epl-fantasy-geek/js/static-data.json')
       .then(response => response.json())
       .then(data => {
-        // dispatch as many times as we want here
-
         console.info('response success');
         dispatch(initialDataSuccess(data));
         dispatch(getMostPopular());
+      }).catch(error => {
+        console.log('Error fetching data - ', error);
+        dispatch(initialDataError(error));
       });
-
-      // Error handling needed
   };
 }
