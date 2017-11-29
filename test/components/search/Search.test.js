@@ -1,7 +1,12 @@
+/* eslint-env mocha */
 import React from 'react';
-import { expect } from 'chai';
+import chai from 'chai';
 import { shallow } from 'enzyme';
 import { spy } from 'sinon';
+import sinonChai from 'sinon-chai';
+
+const { expect } = chai;
+chai.use(sinonChai);
 
 import Search from '../../../client/components/search/Search';
 import Loader from '../../../client/components/Loader';
@@ -9,9 +14,10 @@ import TypeaheadModule from 'react-typeahead';
 const Typeahead = TypeaheadModule.Typeahead;
 
 describe('Search component', function () {
+  const submitSearch = spy();
   context('On render', function () {
     context('Without data', function () {
-      const component = shallow(<Search />);
+      const component = shallow(<Search submitSearch={submitSearch} />);
 
       it('should render loading', function () {
         expect(component.find(Loader)).to.have.length(1);
@@ -41,7 +47,7 @@ describe('Search component', function () {
             }
           ]
         };
-        component = shallow(<Search data={data}/>);
+        component = shallow(<Search data={data} submitSearch={submitSearch} />);
       });
 
       it('should render search input', function () {
@@ -50,8 +56,8 @@ describe('Search component', function () {
     });
   });
 
-  context.only('Search input', function () {
-    context('On selecting autocomplete option', function () {
+  context('Search input', function () {
+    context('On submit', function () {
       let component;
       beforeEach(() => {
         const data = {
@@ -74,23 +80,14 @@ describe('Search component', function () {
             }
           ]
         };
-        component = shallow(<Search data={data}/>);
+        component = shallow(<Search data={data} submitSearch={submitSearch}/>);
       });
 
-      console.log(component);
-
-      it('should fire submitSearch function', function () {
-        
+      it('should fire submitSearch with player/ and selected player', function () {
+        const instance = component.instance();
+        instance.onSubmitSearch('Adam Lallana');
+        expect(submitSearch.calledWith('player/Adam Lallana'));
       });
-
     });
-  });
-
-  context('On submit', function () {
-
-    // should fire submit action
-
-    // should re direct
-    
   });
 });

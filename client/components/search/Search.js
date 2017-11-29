@@ -63,7 +63,7 @@ class Search extends Component {
     }
   };
 
-  submitSearch = value => {
+  onSubmitSearch = value => {
     const path = `player/${value}`;
     this.props.submitSearch(path);
   }
@@ -87,7 +87,7 @@ class Search extends Component {
               results: css(styles.searchDropdown),
               listItem: css(styles.searchDropdownItem)
             }}
-            onOptionSelected={this.submitSearch} />
+            onOptionSelected={this.onSubmitSearch} />
         </div>
       </section>
     );
