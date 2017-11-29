@@ -3,9 +3,24 @@ import PropTypes from 'prop-types';
 import Loader from '../Loader';
 import {StyleSheet, css} from 'aphrodite';
 
+import {PlayerDataMap} from './PlayerDataMap';
+
 const styles = StyleSheet.create({
+  mainStatsContainer: {
+    display: 'flex',
+    flexFlow: 'wrap',
+    padding: '1rem'
+  },
+  mainStat: {
+    width: '25%'
+  },
   statList: {
-    listStyleType: 'none'
+    listStyleType: 'none',
+    padding: 0,
+    margin: 0
+  },
+  listItem: {
+    paddingBottom: '4px'
   }
 });
 
@@ -14,10 +29,25 @@ class PlayerSearch extends Component {
     super(props);
   }
 
+  formatStatus(data) {
+    if (data.status === 'a') {
+      data.status = 'Available';
+      return data;
+    } else if (data.status === 'd') {
+      data.status = 'Doubt';
+      return data;
+    }
+
+    data.status = 'Injured';
+    return data;
+  }
+
   getPlayerData() {
     const playerSearched = this.props.player;
     const {data} = this.props;
     const dataFields = [
+      'first_name',
+      'second_name',
       'status',
       'news',
       'now_cost',
@@ -68,11 +98,19 @@ class PlayerSearch extends Component {
         };
       });
 
-      return reducedData;
+      return this.formatStatus(reducedData);
     }
   }
 
-  render() {
+  renderError() {
+    return (
+      <div data-test='error'>
+        Sorry, there was an error retrieving the player data.
+      </div>
+    );
+  }
+
+  renderData() {
     const {data} = this.props;
     const playerData = data && this.getPlayerData();
     return (
@@ -80,17 +118,62 @@ class PlayerSearch extends Component {
         {!data && <Loader />}
         {data &&
           <div>
-            <h2>{playerData.first_name} {playerData.second_name}</h2>
+            <h1 data-test='name-header'>{playerData.first_name} {playerData.second_name}</h1>
+
+            <div className={css(styles.mainStatsContainer)}>
+              <div className={css(styles.mainStat)}>
+                <h3>{PlayerDataMap.now_cost}</h3>
+                <h2>{playerData.now_cost}</h2>
+              </div>
+              <div className={css(styles.mainStat)}>
+                <h3>{PlayerDataMap.total_points}</h3>
+                <h2>{playerData.total_points}</h2>
+              </div>
+              <div className={css(styles.mainStat)}>
+                <h3>{PlayerDataMap.event_points}</h3>
+                <h2>{playerData.event_points}</h2>
+              </div>
+              <div className={css(styles.mainStat)}>
+                <h3>{PlayerDataMap.status}</h3>
+                <h2>{playerData.status}</h2>
+              </div>
+              <div className={css(styles.mainStat)}>
+                <h3>{PlayerDataMap.goals_scored}</h3>
+                <h2>{playerData.goals_scored}</h2>
+              </div>
+              <div className={css(styles.mainStat)}>
+                <h3>{PlayerDataMap.assists}</h3>
+                <h2>{playerData.assists}</h2>
+              </div>
+              <div className={css(styles.mainStat)}>
+                <h3>{PlayerDataMap.bonus}</h3>
+                <h2>{playerData.bonus}</h2>
+              </div>
+              <div className={css(styles.mainStat)}>
+                <h3>{PlayerDataMap.form}</h3>
+                <h2>{playerData.form}</h2>
+              </div>
+            </div>
             <ul className={css(styles.statList)}>
-            {data && Object.keys(playerData).map( stat => {
+            <h2>All stats</h2>
+            {data && Object.keys(playerData).map(stat => {
               return (
-                <li key={stat}>{stat}: {playerData[stat]}</li>
+                <li className={css(styles.listItem)} key={stat}>{PlayerDataMap[stat]}: {playerData[stat]}</li>
               );
             })}
           </ul>
         </div>}
       </div>
     );
+  }
+
+  render() {
+    const {error} = this.props;
+
+    if (error) {
+      return this.renderError();
+    }
+    return this.renderData();
   }
 }
 

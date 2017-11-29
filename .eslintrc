@@ -55,7 +55,7 @@
   "env": {
     "browser": true,
     "es6": true,
-    "node": true
+    "node": true  
   },
   "parser": "babel-eslint",
   "rules": {
@@ -78,6 +78,7 @@
     "react/react-in-jsx-scope": 2,
     "react/self-closing-comp": 2,
     "react/wrap-multilines": 2,
+    "camelcase": [2, {"properties": "never"}],
     "quotes": [2, "single"],
     "space-before-function-paren": [2, {
       "anonymous": "always",
