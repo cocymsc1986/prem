@@ -1,11 +1,14 @@
 import React, {Component} from 'react';
-import { StyleSheet, css } from 'aphrodite';
-import { font } from '../ui/theme';
+import {StyleSheet, css} from 'aphrodite';
+import {font, maxWidth} from '../ui/theme';
+
 
 const styles = StyleSheet.create({
   intro: {
     fontSize: font.size.lead,
-    lineHeight: font.size.leadValue * 1.5 + 'px'
+    lineHeight: font.size.leadValue * 1.5 + 'px',
+    maxWidth: maxWidth,
+    margin: '0 auto'
   }
 });
 

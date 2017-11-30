@@ -2,25 +2,60 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import Loader from '../Loader';
 import {StyleSheet, css} from 'aphrodite';
+import {maxWidth, colours, spacing, spacingValue, font} from '../../ui/theme';
 
 import {PlayerDataMap} from './PlayerDataMap';
+import getClubInfo from '../../helpers/getClubInfo';
+
 
 const styles = StyleSheet.create({
+  wrapper: {
+    maxWidth: maxWidth,
+    margin: '0 auto',
+    display: 'flex',
+    justifyContent: 'space-between'
+  },
   mainStatsContainer: {
+    maxWidth: maxWidth,
+    margin: '0 auto',
     display: 'flex',
     flexFlow: 'wrap',
-    padding: '1rem'
+    padding: spacing,
+    justifyContent: 'space-between'
   },
   mainStat: {
-    width: '25%'
+    width: '24%',
+    background: colours.greyDarkest,
+    color: '#fff',
+    padding: `0 ${spacing}`,
+    boxSizing: 'border-box',
+    margin: `${spacingValue / 2}px 0`
   },
   statList: {
+    maxWidth: maxWidth,
     listStyleType: 'none',
     padding: 0,
-    margin: 0
+    margin: '0 auto'
   },
   listItem: {
-    paddingBottom: '4px'
+    marginBottom: `${spacingValue / 2}px`
+  },
+  listItemValue: {
+    fontWeight: 'bold',
+    fontSize: font.size.lead
+  },
+  playerHeader: {
+    marginTop: '5px',
+    padding: `${spacingValue * 2}px`
+  },
+  badgeContainer: {
+    textAlign: 'right'
+  },
+  badge: {
+    maxWidth: '100px'
+  },
+  headerLink: {
+    color: '#fff'
   }
 });
 
@@ -113,13 +148,30 @@ class PlayerSearch extends Component {
   renderData() {
     const {data} = this.props;
     const playerData = data && this.getPlayerData();
+    const team = data && getClubInfo(playerData.team);
+    const teamUrl = team && `/team/${team.name}`;
+    const badgeUrl = data && `../${team.badgeUrl}`;
+
     return (
       <div>
         {!data && <Loader />}
         {data &&
           <div>
-            <h1 data-test='name-header'>{playerData.first_name} {playerData.second_name}</h1>
-
+            <div
+              className={css(styles.playerHeader)}
+              style={{background: team.primaryColour, color: team.secondaryColour}}
+            >
+              <div className={css(styles.wrapper)}>
+                <div>
+                  <a style={{color: team.secondaryColour}} href="/">&lt; Back</a>
+                  <h1 data-test='name-header'>{playerData.first_name} {playerData.second_name}</h1>
+                  <h4><a style={{color: team.secondaryColour}} href={teamUrl}>{team.name}</a></h4>
+                </div>
+                <div className={css(styles.badgeContainer)}>
+                  <img className={css(styles.badge)} src={badgeUrl} alt='teamBadge'/>
+                </div>
+              </div>
+            </div>
             <div className={css(styles.mainStatsContainer)}>
               <div className={css(styles.mainStat)}>
                 <h3>{PlayerDataMap.now_cost}</h3>
@@ -155,13 +207,16 @@ class PlayerSearch extends Component {
               </div>
             </div>
             <ul className={css(styles.statList)}>
-            <h2>All stats</h2>
-            {data && Object.keys(playerData).map(stat => {
-              return (
-                <li className={css(styles.listItem)} key={stat}>{PlayerDataMap[stat]}: {playerData[stat]}</li>
-              );
-            })}
-          </ul>
+              <a href="/">&lt; Back</a>
+              <h2>All stats</h2>
+              {data && Object.keys(playerData).map(stat => {
+                return (
+                  <li className={css(styles.listItem)} key={stat}>
+                    {PlayerDataMap[stat]}: <span className={css(styles.listItemValue)}>{playerData[stat]}</span>
+                  </li>
+                );
+              })}
+            </ul>
         </div>}
       </div>
     );

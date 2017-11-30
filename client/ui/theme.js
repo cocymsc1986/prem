@@ -6,9 +6,11 @@ const theme = {
     greyLight: '#D3D3D3',
     grey: '#BBB7B7',
     greyDark: '#999999',
-    greyDarker: '#757474'
+    greyDarker: '#757474',
+    greyDarkest: '#2D2D2D'
   },
   spacing: '14px',
+  spacingValue: 14,
   maxWidth: '1024px',
   font: {
     familyDefault: 'Raleway',
