@@ -3,9 +3,13 @@ import PropTypes from 'prop-types';
 import Loader from '../Loader';
 import {StyleSheet, css} from 'aphrodite';
 
-import {colours} from '../../ui/theme.js';
+import {colours, maxWidth} from '../../ui/theme.js';
 
 const styles = StyleSheet.create({
+  popularBlock: {
+    maxWidth: maxWidth,
+    margin: '0 auto'
+  },
   popularContainer: {
     display: 'flex',
     flexFlow: 'row wrap',

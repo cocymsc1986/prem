@@ -5,9 +5,7 @@ import thunkMiddleware from 'redux-thunk';
 import createLogger from 'redux-logger';
 import {Provider} from 'react-redux';
 import Routes from './Routes';
-import {StyleSheet, css} from 'aphrodite';
 
-import {maxWidth} from './ui/theme';
 import Header from './components/Header';
 
 import reducer from './redux/reducers/index';
@@ -22,13 +20,6 @@ const store = createStore(reducer,
 
 import {getData} from './redux/actions/actions';
 
-const styles = StyleSheet.create({
-  wrapper: {
-    maxWidth: maxWidth,
-    margin: '0 auto'
-  }
-});
-
 class App extends Component {
   constructor(props) {
     super(props);
@@ -41,9 +32,7 @@ class App extends Component {
       <Provider store={store}>
         <div>
           <Header />
-          <div className={css(styles.wrapper)}>
-            <Routes />
-          </div>
+          <Routes />
         </div>
       </Provider>
     );
