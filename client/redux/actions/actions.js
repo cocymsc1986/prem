@@ -4,7 +4,8 @@ import {
   INITIAL_DATA_ERROR,
   FETCHING_DATA,
   GET_MOST_POPULAR,
-  GO_TO_URL
+  GO_TO_URL,
+  FORMAT_MAIN_DATA_VALUES
 } from './actionTypes';
 
 /*

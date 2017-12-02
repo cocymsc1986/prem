@@ -127,10 +127,21 @@ class PlayerSearch extends Component {
       let reducedData = {};
 
       dataFields.forEach((field, index) => {
-        reducedData = {
-          ...reducedData,
-          [dataFields[index]]: playerData[field]
-        };
+        if (
+          field === 'now_cost' ||
+          field === 'cost_change_start' ||
+          field === 'cost_change_event'
+        ) {
+          reducedData = {
+            ...reducedData,
+            [dataFields[index]]: playerData[field] / 10
+          };
+        } else {
+          reducedData = {
+            ...reducedData,
+            [dataFields[index]]: playerData[field]
+          };
+        }
       });
 
       return this.formatStatus(reducedData);
