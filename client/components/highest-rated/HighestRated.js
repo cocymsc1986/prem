@@ -94,8 +94,12 @@ class HighestRated extends Component {
 										</a>
 										<p className={css(styles.teamAbbr)}>{getClubInfo(element.team).abbr}</p>
 									</div>
-									<span className={css(styles.totalVal)}>{element.now_cost / 10}</span>
-									<span className={css(styles.totalVal)}>{element.total_points}pts</span>
+									<span className={css(styles.totalVal)} data-test='player-cost'>
+										{element.now_cost / 10}
+									</span>
+									<span className={css(styles.totalVal)} data-test='player-points'>
+										{element.total_points}pts
+									</span>
 								</div>
 							);
 						})}

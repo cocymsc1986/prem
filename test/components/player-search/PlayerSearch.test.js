@@ -43,11 +43,13 @@ describe('PlayerSearch component', () => {
 				elements: [
 					{
 						first_name: 'Adam',
-						second_name: 'Lallana'
+						second_name: 'Lallana',
+						team: 1
 					},
 					{
 						first_name: 'Alvaro',
-						second_name: 'Morata'
+						second_name: 'Morata',
+						team: 2
 					}
 				]
 			};
@@ -69,7 +71,8 @@ describe('PlayerSearch component', () => {
 				{
 					first_name: 'Adam',
 					second_name: 'Lallana',
-					status: 'i'
+					status: 'i',
+					team: 1
 				}
 			]
 		};
@@ -79,13 +82,15 @@ describe('PlayerSearch component', () => {
 			const filteredData = {
 				first_name: 'Adam',
 				second_name: 'Lallana',
-				status: 'i'
+				status: 'i',
+				team: 1
 			};
 			const formattedData = component.instance().formatStatus(filteredData);
 			expect(formattedData).to.deep.equal({
 				first_name: 'Adam',
 				second_name: 'Lallana',
-				status: 'Injured'
+				status: 'Injured',
+				team: 1
 			});
 		});
 
@@ -93,13 +98,15 @@ describe('PlayerSearch component', () => {
 			const filteredData = {
 				first_name: 'Adam',
 				second_name: 'Lallana',
-				status: 'a'
+				status: 'a',
+				team: 1
 			};
 			const formattedData = component.instance().formatStatus(filteredData);
 			expect(formattedData).to.deep.equal({
 				first_name: 'Adam',
 				second_name: 'Lallana',
-				status: 'Available'
+				status: 'Available',
+				team: 1
 			});
 		});
 
@@ -107,13 +114,15 @@ describe('PlayerSearch component', () => {
 			const filteredData = {
 				first_name: 'Adam',
 				second_name: 'Lallana',
-				status: 'd'
+				status: 'd',
+				team: 1
 			};
 			const formattedData = component.instance().formatStatus(filteredData);
 			expect(formattedData).to.deep.equal({
 				first_name: 'Adam',
 				second_name: 'Lallana',
-				status: 'Doubt'
+				status: 'Doubt',
+				team: 1
 			});
 		});
 	});
@@ -127,7 +136,7 @@ describe('PlayerSearch component', () => {
 						second_name: 'Lallana',
 						status: 'i',
 						news: '',
-						now_cost: 10.0,
+						now_cost: 100,
 						chance_of_playing_this_round: '100%',
 						chance_of_playing_next_round: '100%',
 						value_form: 2,
@@ -162,7 +171,7 @@ describe('PlayerSearch component', () => {
 						second_name: 'Morata',
 						status: 'i',
 						news: '',
-						now_cost: 11.0,
+						now_cost: 110,
 						chance_of_playing_this_round: '100%',
 						chance_of_playing_next_round: '100%',
 						value_form: 4,
@@ -204,11 +213,11 @@ describe('PlayerSearch component', () => {
 				second_name: 'Lallana',
 				status: 'Injured',
 				news: '',
-				now_cost: 10.0,
+				now_cost: 10,
 				chance_of_playing_this_round: '100%',
 				chance_of_playing_next_round: '100%',
 				value_form: 2,
-				cost_change_start: 2,
+				cost_change_start: 0.2,
 				cost_change_event: 0,
 				in_dreamteam: '',
 				dreamteam_count: 1,

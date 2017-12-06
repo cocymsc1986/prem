@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import PlayerSearchContainer from './components/player-search/PlayerSearchContainer';
-import TeamSearchContainer from './components/team-search/TeamSearchContainer';
+import PlayerSearchContainer from './player-search/PlayerSearchContainer';
+import TeamSearchContainer from './team-search/TeamSearchContainer';
 
 class SearchResults extends Component {
   constructor(props) {

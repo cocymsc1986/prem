@@ -17,7 +17,7 @@ const store = createStore(reducer,
   applyMiddleware(
     thunkMiddleware, // lets us dispatch() functions
     // Comment/Un-Comment following line for redux console logging
-    loggerMiddleware // middleware that logs actions
+    // loggerMiddleware // middleware that logs actions
   ));
 
 import {getData} from './redux/actions/actions';
