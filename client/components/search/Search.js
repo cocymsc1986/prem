@@ -5,12 +5,12 @@ const Typeahead = TypeaheadModule.Typeahead;
 import Loader from '../Loader';
 
 import {StyleSheet, css} from 'aphrodite';
-import {colours, font, maxWidth} from '../../ui/theme.js';
+import {colours, font, maxWidth, spacingValue} from '../../ui/theme.js';
 
 const styles = StyleSheet.create({
   searchBlock: {
     maxWidth: maxWidth,
-    margin: '0 auto'
+    margin: `${spacingValue}px auto`
   },
   searchContainer: {
     width: '100%',
@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
   },
   searchDropdownItem: {
     padding: '0.5rem',
-    color: 'black',
+    color: '#fff',
 
     ':hover': {
         background: '#33FFA0'

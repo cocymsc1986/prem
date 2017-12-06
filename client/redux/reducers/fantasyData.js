@@ -8,7 +8,8 @@ const initialState = {
       success: null,
       lastUpdated: null,
       error: null
-    }
+    },
+    data: null
   },
   mostPopular: {
     selected_by_percent: null,
@@ -30,9 +31,6 @@ export default function fantasyData(state = initialState, action) {
           status: {
             pending: true
           }
-        },
-        mostPopular: {
-          ...state.mostPopular
         }
       });
     case 'INITIAL_DATA_SUCCESS':
@@ -45,9 +43,6 @@ export default function fantasyData(state = initialState, action) {
               success: true
             },
             data: action.response
-          },
-          mostPopular: {
-            ...state.mostPopular
           }
       });
     case 'INITIAL_DATA_ERROR':
@@ -59,9 +54,6 @@ export default function fantasyData(state = initialState, action) {
             success: false,
             error: action.response
           }
-        },
-        mostPopular: {
-          ...state.mostPopular
         }
       });
     case 'GET_MOST_POPULAR':
@@ -71,9 +63,6 @@ export default function fantasyData(state = initialState, action) {
       const mostPopularPlayers = getMostPopularStats(data, mostPopular);
 
       return Object.assign({}, state, {
-        mainData: {
-          ...state.mainData
-        },
         mostPopular: {
           ...mostPopularPlayers
         }

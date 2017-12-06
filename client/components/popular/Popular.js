@@ -3,17 +3,20 @@ import PropTypes from 'prop-types';
 import Loader from '../Loader';
 import {StyleSheet, css} from 'aphrodite';
 
-import {colours, maxWidth} from '../../ui/theme.js';
+import {colours, maxWidth, spacingValue} from '../../ui/theme.js';
 
 const styles = StyleSheet.create({
   popularBlock: {
     maxWidth: maxWidth,
-    margin: '0 auto'
+    margin: `${spacingValue * 2}px auto`
   },
   popularContainer: {
     display: 'flex',
     flexFlow: 'row wrap',
     margin: '0 -1%'
+  },
+  header: {
+    marginBottom: 0
   },
   mainItems: {
     flex: '2 0 40%',
@@ -23,7 +26,7 @@ const styles = StyleSheet.create({
   },
   secondaryItems: {
     flex: '1 0 15%',
-    margin: '1rem 1%',
+    margin: '1rem 1% 0',
     padding: '1rem 2%',
     background: '#f8f8f8'
   },
@@ -93,7 +96,7 @@ class Popular extends Component {
 
     return (
       <section className={css(styles.popularBlock)}>
-        <h2>This Gameweek's stats</h2>
+        <h2 className={css(styles.header)}>This Gameweek's stats</h2>
         <div className={css(styles.popularContainer)}>
           {!mostPopular &&
             <Loader />

@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import Intro from './components/Intro';
 import PopularContainer from './components/popular/PopularContainer';
 import SearchContainer from './components/search/SearchContainer';
+import HighestRatedRow from './components/highest-rated/HighestRatedRow';
 
 class Home extends Component {
   render() {
@@ -10,6 +11,7 @@ class Home extends Component {
         <Intro />
         <PopularContainer />
         <SearchContainer />
+        <HighestRatedRow />
       </div>
     );
   }

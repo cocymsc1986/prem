@@ -2,7 +2,7 @@ import React from 'react';
 import {Switch, Route} from 'react-router-dom';
 
 import Home from './Home';
-import SearchResults from './SearchResults';
+import SearchResults from './components/SearchResults';
 
 const Routes = () => (
   <Switch>
