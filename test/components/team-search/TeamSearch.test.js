@@ -37,7 +37,7 @@ describe('TeamSearch component', () => {
 		});
 	});
 
-	context.only('With data', () => {
+	context('With data', () => {
 		beforeEach(() => {
 			const data = {
 				elements: [
