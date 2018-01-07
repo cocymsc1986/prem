@@ -10,6 +10,7 @@ chai.use(sinonChai);
 
 import SearchResults from '../client/components/SearchResults';
 import PlayerSearchContainer from '../client/components/player-search/PlayerSearchContainer';
+import TeamSearchContainer from '../client/components/team-search/TeamSearchContainer';
 
 describe('SearchResults component', () => {
 	context('With player param', () => {
@@ -34,8 +35,8 @@ describe('SearchResults component', () => {
 		};
 		const component = shallow(<SearchResults match={matchParams} />);
 
-		xit('Should render teamsearch component', () => {
-			expect(component.find(PlayerSearchContainer)).to.have.length(1);
+		it('Should render teamsearch component', () => {
+			expect(component.find(TeamSearchContainer)).to.have.length(1);
 		});
 	});
 });

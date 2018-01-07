@@ -69,7 +69,7 @@ const clubs = {
 		name: 'Leicester City',
 		apiname: 'Leicester',
 		abbr: 'LEI',
-		badgeUrl: `${imagePath}/liecester_city.svg`,
+		badgeUrl: `${imagePath}/leicester.svg`,
 		primaryColour: '#0053A0',
 		secondaryColour: '#FDBE11'
 	},
