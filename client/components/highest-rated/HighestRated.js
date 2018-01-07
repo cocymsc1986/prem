@@ -90,7 +90,7 @@ class HighestRated extends Component {
 								<div key={i} className={css(styles.player)}>
 									<div className={css(styles.playerName)}>
 										<a className={css(styles.playerLink)} href={getPlayerLink(element)}>
-											{element.second_name}
+											{element.web_name}
 										</a>
 										<p className={css(styles.teamAbbr)}>{getClubInfo(element.team).abbr}</p>
 									</div>

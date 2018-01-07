@@ -160,7 +160,7 @@ class PlayerSearch extends Component {
     const {data} = this.props;
     const playerData = data && this.getPlayerData();
     const team = data && getClubInfo(playerData.team);
-    const teamUrl = team && `/team/${team.name}`;
+    const teamUrl = team && `/team/${team.apiname}`;
     const badgeUrl = data && `../${team.badgeUrl}`;
 
     return (

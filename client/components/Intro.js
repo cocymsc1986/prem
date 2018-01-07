@@ -19,8 +19,8 @@ class Intro extends Component {
         <p>
           Welcome to Fantasy Prem stats site. This site surfaces current stats for
           Premier League Fantasy Football in an easy to digest format. All points are
-          up to date as of gameweek **number** for deadline **date**. Points will be
-          next updated at the completion of gameweek **number**.
+          up to date as of gameweek **number** for deadline **date**. Points will
+          next be updated at the completion of gameweek **number**.
         </p>
       </div>
     );

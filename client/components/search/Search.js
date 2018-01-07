@@ -27,7 +27,8 @@ const styles = StyleSheet.create({
     padding: '12px',
     width: '100%',
     maxWidth: '600px',
-    margin: '1rem'
+    margin: '1rem',
+    border: 'none'
   },
   searchDropdown: {
     background: '#99FFCF',
