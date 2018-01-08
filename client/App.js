@@ -8,6 +8,7 @@ import {css, StyleSheet} from 'aphrodite';
 import Routes from './Routes';
 
 import Header from './components/Header';
+import Footer from './components/Footer';
 import {colours} from './ui/theme';
 
 import reducer from './redux/reducers/index';
@@ -41,6 +42,7 @@ class App extends Component {
         <div className={css(styles.bodyStyles)}>
           <Header />
           <Routes />
+          <Footer />
         </div>
       </Provider>
     );
