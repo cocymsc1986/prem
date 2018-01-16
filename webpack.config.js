@@ -1,58 +1,39 @@
 const path = require('path');
-const webpack = require('webpack');
-const autoprefixer = require('autoprefixer');
+
+// env
+const buildDirectory = './dist/';
 
 module.exports = {
-	entry: [
-		'webpack-hot-middleware/client',
-		path.resolve(__dirname, 'src')
-	],
-	output: {
-		path: path.resolve(__dirname, 'src'),
-		filename: 'bundle.js',
-		publicPath: '/'
-	},
-	plugins: [
-		new webpack.HotModuleReplacementPlugin(),
-		new webpack.NamedModulesPlugin(),
-		new webpack.DefinePlugin({
-			'process.env': {
-				NODE_ENV: JSON.stringify('development'),
-				WEBPACK: true
-			}
-		})
-	],
-	module: {
-		loaders: [
-			{
-				test: /\.js$/,
-				use: {
-					loader: 'babel-loader',
-					query: {
-						presets: [ 'react-hmre' ]
-					}
-				},
-				include: path.resolve(__dirname, 'src'),
-			},
-			{
-				test: /\.scss/,
-				use: [
-					'style-loader',
-					'css-loader',
-					'sass-loader',
-					{
-						loader: 'postcss-loader',
-						options: {
-							plugins: function() {
-                return [
-                  require('autoprefixer')
-                ];
-              }
-						}
-					}
-				],
-				include: path.resolve(__dirname, 'src')
-			}
-		]
-	}
+  entry: './client/index.js',
+  devServer: {
+    hot: true,
+    inline: true,
+    port: 5000,
+    historyApiFallback: true
+  },
+  resolve: {
+    extensions: ['', '.js', '.jsx']
+  },
+  output: {
+    path: path.resolve(buildDirectory),
+    filename: 'bundle.js',
+    publicPath: 'http://localhost:5000/static'
+  },
+  devTool: 'eval-source-map',
+  externals: {
+    'cheerio': 'window',
+    'react/lib/ExecutionEnvironment': true,
+    'react/lib/ReactContext': true
+  },
+  module: {
+    loaders: [{
+      test: /\.jsx?$/,
+      exclude: /(node_modules|bower_components)/,
+      loader: 'babel',
+      query: {
+        presets: ['react', 'es2015', 'stage-0']
+      }
+    }]
+  },
+  plugins: []
 };
