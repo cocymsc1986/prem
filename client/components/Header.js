@@ -13,7 +13,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold'
   },
   logo: {
-    background: 'url(/client/public/assets/premier-league-logo-header.png) no-repeat',
+    background: 'url(public/assets/premier-league-logo-header.png) no-repeat',
     backgroundSize: '110px',
     height: '75px',
     width: '130px',

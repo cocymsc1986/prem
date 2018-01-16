@@ -17,7 +17,7 @@ module.exports = {
   output: {
     path: path.resolve(buildDirectory),
     filename: 'bundle.js',
-    publicPath: 'http://localhost:5000/static'
+    publicPath: 'public'
   },
   devTool: 'eval-source-map',
   externals: {

@@ -1,4 +1,4 @@
-const imagePath = 'client/public/assets/badges';
+const imagePath = 'public/assets/badges';
 
 const clubs = {
 	1: {
