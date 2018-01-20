@@ -1,5 +1,10 @@
-const initialState = {
-	baseUrl: 'http://localhost:5000/',
+const environment = process.env.NODE_ENV;
+
+const url = environment === 'production' ?
+	'https://fantasyprem.co.uk' : 'http://localhost:5000/';
+
+let initialState = {
+	baseUrl: url,
 	currentUrl: null
 };
 
