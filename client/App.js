@@ -12,20 +12,29 @@ import Footer from './components/Footer';
 import {colours} from './ui/theme';
 
 import reducer from './redux/reducers/index';
+const environment = process.env.NODE_ENV;
 
 const loggerMiddleware = createLogger();
-const store = createStore(reducer,
-  applyMiddleware(
-    thunkMiddleware, // lets us dispatch() functions
-    // Comment/Un-Comment following line for redux console logging
-    loggerMiddleware // middleware that logs actions
-  ));
+let store;
+
+if (environment === 'development') {
+  store = createStore(reducer,
+    applyMiddleware(
+      thunkMiddleware,
+      loggerMiddleware
+    ));
+} else {
+  store = createStore(reducer,
+    applyMiddleware(
+      thunkMiddleware
+    ));
+}
 
 import {getData} from './redux/actions/actions';
 
 const styles = StyleSheet.create({
   bodyStyles: {
-    color: colours.greyDarkest
+    color: colours.black
   }
 });
 

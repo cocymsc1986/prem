@@ -15,6 +15,28 @@ const styles = StyleSheet.create({
     flexFlow: 'row wrap',
     margin: '0 -1%'
   },
+  mainItemLink: {
+    color: 'white',
+
+    ':visited': {
+      color: 'white'
+    },
+
+    ':hover': {
+      'text-decoration': 'none'
+    }
+  },
+  secondaryItemsLink: {
+    color: colours.black,
+
+    ':visited': {
+      color: colours.black
+    },
+
+    ':hover': {
+      'text-decoration': 'none'
+    }
+  },
   header: {
     marginBottom: 0
   },
@@ -54,14 +76,28 @@ const styles = StyleSheet.create({
 class Popular extends Component {
   renderKey(key, i) {
     const { mostPopular } = this.props;
+    const getPlayerHref = (first, second) => encodeURI(`/player/${first} ${second}`);
     if (mostPopular[key] && (key !== 'ict_index')) {
       return (
         <div key={key} className={this.getStyles(key, i)}>
           <p>{this.getTitle(key)}</p>
-          <h2>{mostPopular[key].web_name || ''} {mostPopular[key][key] || ''}</h2>
+          <h2>
+            <a className={this.getLinkStyles(key, i)} href={
+              getPlayerHref(mostPopular[key].first_name, mostPopular[key].second_name)
+            }>{mostPopular[key].web_name || ''}</a> - {mostPopular[key][key] || ''}
+            {key === 'selected_by_percent' && '%'}
+          </h2>
         </div>
       );
     }
+  }
+
+  getLinkStyles(key) {
+    if (key === 'selected_by_percent') {
+      return css(styles.mainItemLink);
+    }
+
+    return css(styles.secondaryItemsLink);
   }
 
   getStyles(key, i) {
@@ -79,7 +115,7 @@ class Popular extends Component {
       case 'selected_by_percent':
         return 'Most Selected';
       case 'total_points':
-        return 'Highest Points';
+        return 'Highest Total Points This Season';
       case 'transfers_in_event':
         return 'Most Transferred In';
       case 'transfers_out_event':

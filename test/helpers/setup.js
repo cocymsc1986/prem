@@ -18,4 +18,5 @@ global.document = window.document;
 global.navigator = {
   userAgent: 'node.js'
 };
+process.env.NODE_ENV = 'test';
 copyProps(window, global);

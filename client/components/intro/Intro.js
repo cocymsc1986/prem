@@ -17,7 +17,6 @@ class Intro extends Component {
   render() {
     const {error, data} = this.props;
     const gameweek = data && data['current-event'];
-    const deadline = data && data.events[gameweek].deadline_time_formatted;
 
     if (error) {
       return (
@@ -42,7 +41,7 @@ class Intro extends Component {
         <p>
           Welcome to Fantasy Prem stats site. This site surfaces current stats for
           Premier League Fantasy Football in an easy to digest format. All points are
-          up to date as of gameweek {gameweek} for deadline {deadline}. Points will
+          up to date as of gameweek {gameweek}. Points will
           next be updated at the completion of gameweek {gameweek + 1}.
         </p>
       </div>
