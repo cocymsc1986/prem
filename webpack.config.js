@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack');
 
 // env
 const buildDirectory = './dist/';
@@ -35,5 +36,11 @@ module.exports = {
       }
     }]
   },
-  plugins: []
+  plugins: [
+    new webpack.DefinePlugin({
+      'process.env': {
+        'NODE_ENV': JSON.stringify('development')
+      }
+    })
+  ]
 };

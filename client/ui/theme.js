@@ -7,7 +7,8 @@ const theme = {
     grey: '#BBB7B7',
     greyDark: '#999999',
     greyDarker: '#757474',
-    greyDarkest: '#2D2D2D'
+    greyDarkest: '#2D2D2D',
+    black: '#1e1e1e'
   },
   spacing: '14px',
   spacingValue: 14,

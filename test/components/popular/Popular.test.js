@@ -60,9 +60,9 @@ describe('Popular component', function () {
 
     it('should render mostPopular data with correct labels and values', function () {
       expect(component.find('p').at(0).text()).to.equal('Most Selected');
-      expect(component.find('p').at(1).text()).to.equal('Highest Points');
-      expect(component.find('h2').at(1).text()).to.equal('test_name 99');
-      expect(component.find('h2').at(2).text()).to.equal('test_name2 50');
+      expect(component.find('p').at(1).text()).to.equal('Highest Total Points This Season');
+      expect(component.find('h2').at(1).text()).to.equal('test_name - 99%');
+      expect(component.find('h2').at(2).text()).to.equal('test_name2 - 50');
     });
   });
 });
