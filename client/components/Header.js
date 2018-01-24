@@ -25,7 +25,7 @@ class Header extends Component {
   render() {
     return (
       <div className={css(styles.header)}>
-        <div className={css(styles.logo)}>&nbsp;</div>
+        <div className={css(styles.logo)}></div>
         <h1 className={css(styles.title)}>Fantasy Prem</h1>
       </div>
     );
